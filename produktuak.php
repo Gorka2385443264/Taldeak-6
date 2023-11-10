@@ -72,11 +72,11 @@ if ($result_modelos->num_rows > 0) {
     <link rel="shortcut icon" href="../../../../../public/Argazkiak/phonix.png">
     <script src="https://kit.fontawesome.com/7f605dc8fe.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../../css/produktuak2.css">
-    <title>Suppliers</title>
+    <title>Informacion</title>
 </head>
 <body>
     <div class="oferta">
-        <p>¡Offer!</p>
+        <p>¡Oferta!</p>
     </div>
     <a href="https://www.goierrieskola.eus/es/">
         <img class="goierri" src="../../../../../public/Argazkiak/goierri-logo.png" alt="Goierri Logo" href="https://www.goierrieskola.eus/es/">
@@ -88,13 +88,13 @@ if ($result_modelos->num_rows > 0) {
             <div class="menu">	
                 <nav>
                     <ul>
-                        <li><a href="../../../Mainpage/eng/index.php" id="selected"></a></li>
-                        <li><a href="../../../supplies/idiomas/eng/informazioa.html" id="informazioa">Information</a></li>	
-                        <li><a href="../../../supplies/idiomas/eng/produktuak.php" id="productos">The products</a></li>		
-                        <li><a href="#">Languages</a>
+                        <li><a href="../../../Mainpage/esp/index.php" id="selected"></a></li>
+                        <li><a href="../../../supplies/idiomas/esp/informazioa.html" id="informazioa">Informacion</a></li>	
+                        <li><a href="../../../supplies/idiomas/esp/produktuak.php" id="productos">Productos</a></li>		
+                        <li><a href="#">Idiomas</a>
                             <ul>
-                                <li><a href="../../../supplies/idiomas/esp/produktuak.php">Spanish</a></li>
-                                <li><a href="../../../supplies/idiomas/eusk/produktuak.php">Basque</a></li>
+                                <li><a href="../../../supplies/idiomas/eng/produktuak.php">Ingles</a></li>
+                                <li><a href="../../../supplies/idiomas/eusk/produktuak.php">Euskera</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -104,37 +104,37 @@ if ($result_modelos->num_rows > 0) {
     </header>
     <center>
         <div class="hornitzailea">
-            <p><a href="hornitzailea.php">Do you want to be a supplier?</a></p>
+            <p><a href="hornitzailea.php">¿Quieres ser un proveedor?</a></p>
         </div>
     </center><br><br>
 
-    <h2>Products Table</h2>
+    <h2>Tabla de Productos</h2>
 
     <form method="GET">
-        <label for="marca">Filter by brand:</label>
+        <label for="marca">Filtrar por marca:</label>
         <select name="marca" id="marca">
-            <option value="">Select a brand</option>
+            <option value="">Seleccione una marca</option>
             <?php foreach ($marcas as $marca) : ?>
                 <option value="<?php echo $marca; ?>"><?php echo $marca; ?></option>
             <?php endforeach; ?>
         </select>
 
-        <label for="modelo">Filter by model:</label>
+        <label for="modelo">Filtrar por modelo:</label>
         <select name="modelo" id="modelo">
-            <option value="">Select a model</option>
+            <option value="">Seleccione un modelo</option>
             <?php foreach ($modelos as $modelo) : ?>
                 <option value="<?php echo $modelo; ?>"><?php echo $modelo; ?></option>
             <?php endforeach; ?>
         </select>
 
-        <label for="precio">Sort by price:</label>
+        <label for="precio">Ordenar por precio:</label>
         <select name="precio" id="precio">
-            <option value="asc">Cheaper price</option>
-            <option value="desc">More expensive price</option>
+            <option value="asc">Precio mas barato</option>
+            <option value="desc">Precio mas caro</option>
         </select>
 
-        <input type="submit" value="Filter">
-        <input type="submit" name="todos" value="Show all">
+        <input type="submit" value="Filtrar">
+        <input type="submit" name="todos" value="Mostrar Todos">
     </form>
    
     <?php
@@ -180,24 +180,24 @@ if ($result_modelos->num_rows > 0) {
     <footer>
         <div class="footer-content">
             <div class="left">
-                <strong>Go buy</strong>
+                <strong>Redes sociales</strong>
                 <p id="instagram"><a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram"></i> Instagram</a></p>
                 <p id="youtube"><a href="https://www.youtube.com/" target="_blank"> <i class="fab fa-youtube"></i> Youtube</a></p>
                 <p id="twitter"><a href="https://twitter.com/home" target="_blank"> <i class="fab fa-twitter-square"></i> Twitter</a></p>
                 <p id="facebook"><a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"></i> Facebook</a></p>
             </div>
             <div class="center">
-               <strong>Legal matters</strong> 
+               <strong>Asuntos legales</strong> 
                 <p><a href="#">RGPD (UE)</a></p>
-                <p><a href="#">Terms and conditions</a></p>
-                <p><a href="#">Privacy Policy</a></p>
-                <p><a href="#">Legal warning</a></p>
+                <p><a href="#">Terminos y condificiones</a></p>
+                <p><a href="#">Politica de privacidad</a></p>
+                <p><a href="#">Aviso legal</a></p>
                 </div>
             <div class="right">
-                <strong>Contact us</strong>
+                <strong>Contactar con nosotros</strong>
                 <p><i class="fa-solid fa-envelope"></i> Email: reborn@gmail.com</p>
-                <p><i class="fa-solid fa-phone"></i> Phone: +372 458 763 198</p>
-                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Direction: Kentmanni, 10141 Tallinn, Estonia</a></p>
+                <p><i class="fa-solid fa-phone"></i> Telefono: +372 458 763 198</p>
+                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Direccion: Kentmanni, 10141 Tallinn, Estonia</a></p>
             </div>
         </div>
     </footer>
