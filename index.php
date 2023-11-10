@@ -47,11 +47,11 @@ $result = $conn->query($sql);
     <link rel="shortcut icon" href="../../../../public/Argazkiak/phonix.png">
     <script src="https://kit.fontawesome.com/7f605dc8fe.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../css/index.css">
-    <title>Inicio</title>
+    <title>Beginning</title>
 </head>
 <body>
     <div class="oferta">
-        <p>¡Oferta!</p>
+        <p>¡Offer!</p>
     </div>
     <a href="https://www.goierrieskola.eus/es/">
         <img class="goierri" src="../../../../public/Argazkiak/goierri-logo.png" alt="Goierri Logo" href="https://www.goierrieskola.eus/es/">
@@ -64,12 +64,12 @@ $result = $conn->query($sql);
                 <nav>
                     <ul>
                         <li><a href="#" id="selected"></a></li>
-                        <li><a href="../../supplies/idiomas/esp/informazioa.html" id="informazioa">Informacion</a></li>	
-                        <li><a href="../../supplies/idiomas/esp/produktuak.php">Productos</a></li>		
-                        <li><a href="#">Idiomas</a>
+                        <li><a href="../../supplies/idiomas/eng/informazioa.html" id="informazioa">Information</a></li>	
+                        <li><a href="../../supplies/idiomas/eng/produktuak.php">Products</a></li>		
+                        <li><a href="#">Languages</a>
                             <ul>
-                                <li><a href="../eusk/index.php">Euskera</a></li>
-                                <li><a href="../eng/index.php">Ingles</a></li>
+                                <li><a href="../esp/index.php">Spanish</a></li>
+                                <li><a href="../eusk/index.php">Baskque</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -79,7 +79,7 @@ $result = $conn->query($sql);
     </header>
     <br>
     <div class="tituloa">
-    <h2>Tendencias <i class="fa-solid fa-fire"></i></h2>
+    <h2>Trending <i class="fa-solid fa-fire"></i></h2>
    <div class="productos">
         <div class="producto_1"><a class="produktuak_esteka" href="#">
             <i class="fa-solid fa-fire"></i>MSI MPG B550 GAMING PLUS 
@@ -110,31 +110,31 @@ $result = $conn->query($sql);
     </div>
     <!---LA PARTE DE LAS NEWS DE LA PAGINA-->
     <br>
-    <h2>Tabla de Noticias</h2><br>
+    <h2>News Table</h2><br>
 
 
     <form method="post">
-        <label for="ordenar">¿Cómo quieres ordenar la tabla por Fecha?</label><br>
+        <label for="ordenar">How do you want to sort the table by Date?</label><br>
         <select name="orden">
-            <option value="ASC">Nuevo</option>
-            <option value="DESC">Viejo</option>
+            <option value="ASC">New</option>
+            <option value="DESC">Old</option>
         </select>
         <input type="submit" name="ordenar_fecha" value="Ordenar por Fecha"><br><br>
 
-        <label for="buscar_fecha_vieja">Buscar fechas más viejas/igual que:</label><br>
-          <input class="input_texto" type="text" name="fecha_ingresada_vieja" placeholder="Fecha (YYYY-MM-DD)">
-    <input type="submit" name="buscar_mas_vieja" value="Buscar fechas más viejas"><br><br>
+        <label for="buscar_fecha_vieja">Find dates older/same as:</label><br>
+          <input class="input_texto" type="text" name="fecha_ingresada_vieja" placeholder="Date (YYYY-MM-DD)">
+    <input type="submit" name="buscar_mas_vieja" value="Find older dates"><br><br>
 
-    <label for="buscar_fecha_nueva">Buscar fechas más nuevas/igual que:</label><br>
-    <input class="input_texto" type="text" name="fecha_ingresada_nueva" placeholder="Fecha (YYYY-MM-DD)">
-    <input type="submit" name="buscar_mas_nueva" value="Buscar fechas más nuevas"><br><br>
+    <label for="buscar_fecha_nueva">Find dates newer/same as:</label><br>
+    <input class="input_texto" type="text" name="fecha_ingresada_nueva" placeholder="Date (YYYY-MM-DD)">
+    <input type="submit" name="buscar_mas_nueva" value="Find newer dates"><br><br>
 
-        <label for="buscar_entre_fechas">Buscar entre dos Fechas:</label><br>
-        <input class="input_texto" type="text" name="fecha_inicial" placeholder="Fecha Inicial (YYYY-MM-DD)">
-        <input class="input_texto" type="text" name="fecha_final" placeholder="Fecha Final (YYYY-MM-DD)">
-        <input type="submit" name="buscar_entre_fechas" value="Buscar entre dos Fechas"><br><br>
+        <label for="buscar_entre_fechas">Search between two Dates:</label><br>
+        <input class="input_texto" type="text" name="fecha_inicial" placeholder="Initial Date (YYYY-MM-DD)">
+        <input class="input_texto" type="text" name="fecha_final" placeholder="Final Date (YYYY-MM-DD)">
+        <input type="submit" name="buscar_entre_fechas" value="Search between two Dates"><br><br>
 
-        <input type="submit" name="ver_todos" value="Ver Todos">
+        <input type="submit" name="ver_todos" value="See all">
     </form>
 
     <?php
@@ -179,24 +179,24 @@ if ($result->num_rows > 0) {
     <footer>
         <div class="footer-content">
             <div class="left">
-                <strong>Redes sociales</strong>
+                <strong>Social networks</strong>
                 <p id="instagram"><a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram"></i> Instagram</a></p>
                 <p id="youtube"><a href="https://www.youtube.com/" target="_blank"> <i class="fab fa-youtube"></i> Youtube</a></p>
                 <p id="twitter"><a href="https://twitter.com/home" target="_blank"> <i class="fab fa-twitter-square"></i> Twitter</a></p>
                 <p id="facebook"><a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"></i> Facebook</a></p>
             </div>
             <div class="center">
-               <strong>Asuntos legales</strong> 
+               <strong>Legal matters</strong> 
                 <p><a href="#">RGPD (UE)</a></p>
-                <p><a href="#">Terminos y condificiones</a></p>
-                <p><a href="#">Politica de privacidad</a></p>
-                <p><a href="#">Aviso legal</a></p>
+                <p><a href="#">Terms and Conditions</a></p>
+                <p><a href="#">Privacy Policy</a></p>
+                <p><a href="#">Legal warning</a></p>
                 </div>
             <div class="right">
-                <strong>Contactar con nosotros</strong>
+                <strong>Contact us</strong>
                 <p><i class="fa-solid fa-envelope"></i> Email: reborn@gmail.com</p>
-                <p><i class="fa-solid fa-phone"></i> Telefono: +372 458 763 198</p>
-                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Direccion: Kentmanni, 10141 Tallinn, Estonia</a></p>
+                <p><i class="fa-solid fa-phone"></i> Phone: +372 458 763 198</p>
+                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Direction: Kentmanni, 10141 Tallinn, Estonia</a></p>
             </div>
         </div>
     </footer>
