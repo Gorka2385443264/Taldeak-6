@@ -16,27 +16,46 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM reborn.biltegia";
 
 // Verificar si se han enviado parámetros GET para filtrar
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $params = array();
+    $conditions = array();
+
     if (isset($_GET['marca']) && !empty($_GET['marca'])) {
-        $marca = $_GET['marca'];
-        $sql .= " WHERE Marca = '$marca'";
+        $conditions[] = "Marca = ?";
+        $params[] = $_GET['marca'];
     }
 
     if (isset($_GET['modelo']) && !empty($_GET['modelo'])) {
-        $modelo = $_GET['modelo'];
-        // Añadir la condición WHERE si no se ha añadido previamente
-        $sql .= (strpos($sql, 'WHERE') !== false) ? " AND Produktua = '$modelo'" : " WHERE Produktua = '$modelo'";
+        $conditions[] = "Produktua = ?";
+        $params[] = $_GET['modelo'];
     }
 
     if (isset($_GET['precio']) && !empty($_GET['precio'])) {
         $orden = ($_GET['precio'] == 'asc') ? 'asc' : 'desc';
-        // Agregar la cláusula ORDER BY solo si no existe en la consulta
-        $sql .= (strpos($sql, 'ORDER BY') !== false) ? " Prezioa $orden" : " ORDER BY Prezioa $orden";
+        $sql .= (empty($conditions) ? " WHERE" : " AND") . " ORDER BY Prezioa $orden";
+    }
+
+    if (!empty($conditions)) {
+        $sql .= " WHERE " . implode(" AND ", $conditions);
     }
 }
 
-// Ejecutar la consulta SQL
-$result = $conn->query($sql);
+// Utilizar una consulta preparada para prevenir inyecciones SQL
+if (isset($sql)) {
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        if (!empty($params)) {
+            $types = str_repeat('s', count($params)); // assuming all params are strings
+            $stmt->bind_param($types, ...$params);
+        }
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+    } else {
+        echo "Error en la preparación de la consulta";
+    }
+}
 
 // Obtener las marcas
 $sql_marcas = "SELECT DISTINCT Marca FROM reborn.biltegia";
@@ -64,6 +83,8 @@ if ($result_modelos->num_rows > 0) {
 
 
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -72,7 +93,7 @@ if ($result_modelos->num_rows > 0) {
     <link rel="shortcut icon" href="../../../../../public/Argazkiak/phonix.png">
     <script src="https://kit.fontawesome.com/7f605dc8fe.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../../css/produktuak2.css">
-    <title>Informacion</title>
+    <title>Produktuak</title>
 </head>
 <body>
     <div class="oferta">
@@ -88,13 +109,13 @@ if ($result_modelos->num_rows > 0) {
             <div class="menu">	
                 <nav>
                     <ul>
-                        <li><a href="../../../Mainpage/esp/index.php" id="selected"></a></li>
-                        <li><a href="../../../supplies/idiomas/esp/informazioa.html" id="informazioa">Informacion</a></li>	
-                        <li><a href="../../../supplies/idiomas/esp/produktuak.php" id="productos">Productos</a></li>		
-                        <li><a href="#">Idiomas</a>
+                        <li><a href="../../../Mainpage/eusk/index.php" id="selected"></a></li>
+                        <li><a href="../../../supplies/idiomas/eusk/informazioa.html" id="informazioa">Informazioa</a></li>	
+                        <li><a href="../../../supplies/idiomas/eusk/produktuak.php" id="productos">Produktuak</a></li>		
+                        <li><a href="#">Hizkuntzak</a>
                             <ul>
-                                <li><a href="../../../supplies/idiomas/eng/produktuak.php">Ingles</a></li>
-                                <li><a href="../../../supplies/idiomas/eusk/produktuak.php">Euskera</a></li>
+                                <li><a href="../../../supplies/idiomas/esp/produktuak.php">Español</a></li>
+                                <li><a href="../../../supplies/idiomas/eng/produktuak.php">Ingelera</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -104,37 +125,37 @@ if ($result_modelos->num_rows > 0) {
     </header>
     <center>
         <div class="hornitzailea">
-            <p><a href="hornitzailea.php">¿Quieres ser un proveedor?</a></p>
+            <p><a href="hornitzailea.php">Hornitzaile izan nahi al duzu?</a></p>
         </div>
     </center><br><br>
 
-    <h2>Tabla de Productos</h2>
+    <h2>Produktuen taula</h2>
 
     <form method="GET">
-        <label for="marca">Filtrar por marca:</label>
+        <label for="marca">Iragazi markaren arabera:</label>
         <select name="marca" id="marca">
-            <option value="">Seleccione una marca</option>
+            <option value="">Hautatu marka bat</option>
             <?php foreach ($marcas as $marca) : ?>
                 <option value="<?php echo $marca; ?>"><?php echo $marca; ?></option>
             <?php endforeach; ?>
         </select>
 
-        <label for="modelo">Filtrar por modelo:</label>
+        <label for="modelo">Iragazi ereduaren arabera:</label>
         <select name="modelo" id="modelo">
-            <option value="">Seleccione un modelo</option>
+            <option value="">Aukeratu eredu bat</option>
             <?php foreach ($modelos as $modelo) : ?>
                 <option value="<?php echo $modelo; ?>"><?php echo $modelo; ?></option>
             <?php endforeach; ?>
         </select>
 
-        <label for="precio">Ordenar por precio:</label>
+        <label for="precio">Ordenatu prezioaren arabera:</label>
         <select name="precio" id="precio">
-            <option value="asc">Precio mas barato</option>
-            <option value="desc">Precio mas caro</option>
+            <option value="asc">Prezio merkeagoa</option>
+            <option value="desc">Prezio garestiagoa</option>
         </select>
 
-        <input type="submit" value="Filtrar">
-        <input type="submit" name="todos" value="Mostrar Todos">
+        <input type="submit" value="Iragazkia">
+        <input type="submit" name="todos" value="Erakutsi dena">
     </form>
    
     <?php
@@ -180,27 +201,28 @@ if ($result_modelos->num_rows > 0) {
     <footer>
         <div class="footer-content">
             <div class="left">
-                <strong>Redes sociales</strong>
+                <strong>Sare sozialak</strong>
                 <p id="instagram"><a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram"></i> Instagram</a></p>
                 <p id="youtube"><a href="https://www.youtube.com/" target="_blank"> <i class="fab fa-youtube"></i> Youtube</a></p>
                 <p id="twitter"><a href="https://twitter.com/home" target="_blank"> <i class="fab fa-twitter-square"></i> Twitter</a></p>
                 <p id="facebook"><a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"></i> Facebook</a></p>
             </div>
             <div class="center">
-               <strong>Asuntos legales</strong> 
+               <strong>Legezko gaiak</strong> 
                 <p><a href="#">RGPD (UE)</a></p>
-                <p><a href="#">Terminos y condificiones</a></p>
-                <p><a href="#">Politica de privacidad</a></p>
-                <p><a href="#">Aviso legal</a></p>
+                <p><a href="#">Baldintza juridikoak</a></p>
+                <p><a href="#">Pribatutasun politika</a></p>
+                <p><a href="#">Lege abisua</a></p>
                 </div>
             <div class="right">
-                <strong>Contactar con nosotros</strong>
+                <strong>Jarri gurekin harremanetan</strong>
                 <p><i class="fa-solid fa-envelope"></i> Email: reborn@gmail.com</p>
-                <p><i class="fa-solid fa-phone"></i> Telefono: +372 458 763 198</p>
-                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Direccion: Kentmanni, 10141 Tallinn, Estonia</a></p>
+                <p><i class="fa-solid fa-phone"></i> Mugikorra: +372 458 763 198</p>
+                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Helbidea: Kentmanni, 10141 Tallinn, Estonia</a></p>
             </div>
         </div>
     </footer>
+
     <?php
     $conn->close();
     ?>

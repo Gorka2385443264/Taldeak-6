@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="../../../../../public/Argazkiak/phonix.png">
     <script src="https://kit.fontawesome.com/7f605dc8fe.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../../css/hornitzailea.css">
-    <title>Proveedor</title>
+    <title>Hornitzailea</title>
 </head>
 <body>
     <div class="oferta">
@@ -22,13 +22,13 @@
             <div class="menu">	
                 <nav>
                     <ul>
-                        <li><a href="../../../Mainpage/esp/index.php" id="selected"></a></li>
-                        <li><a href="../../../supplies/idiomas/esp/informazioa.html" id="informazioa">Informacion</a></li>	
-                        <li><a href="../../../supplies/idiomas/esp/produktuak.php" id="productos">Productos</a></li>		
-                        <li><a href="#">Idiomas</a>
+                        <li><a href="../../../Mainpage/eusk/index.php" id="selected"></a></li>
+                        <li><a href="../../../supplies/idiomas/eusk/informazioa.html" id="informazioa">Informazioa</a></li>	
+                        <li><a href="../../../supplies/idiomas/eusk/produktuak.php" id="productos">Produktuak</a></li>		
+                        <li><a href="#">Hizkuntzak</a>
                             <ul>
-                                <li><a href="../../../supplies/idiomas/eng/hornitzailea.php">Ingles</a></li>
-                                <li><a href="../../../supplies/idiomas/eusk/hornitzailea.php">Euskera</a></li>
+                                <li><a href="../../../supplies/idiomas/esp/hornitzailea.php">Español</a></li>
+                                <li><a href="../../../supplies/idiomas/eng/hornitzailea.php">Ingelera</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -39,31 +39,31 @@
 
     <div class="form">
         <form method="POST">
-            <h1> - Rellena el formulario -</h1><br>
-            <label for="empresa">Nombre de la empresa:</label>
-            <input type="text" id="empresa" name="empresa" placeholder="Pon aqui el nombre de la empresa" required><br>
+            <h1> - Bete formularioa -</h1><br>
+            <label for="empresa">Enpresaren izena:</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Jarri hemen enpresaren izena" required><br>
 
-            <label for="material">Material:</label>
-            <input type="text" id="material" name="material" placeholder="Pon aqui tu material" required><br>
+            <label for="material">Materiala:</label>
+            <input type="text" id="material" name="material" placeholder="Jarri zure materiala hemen" required><br>
 
-            <label for="webgunea">Web de la empresa:</label>
-            <input type="text" name="webgunea" id="webgunea" placeholder="Pon aqui la pagina-web"><br>
+            <label for="webgunea">Enpresaren webgunea:</label>
+            <input type="text" name="webgunea" id="webgunea" placeholder="Jarri webgunea hemen"><br>
 
-            <label for="kontua">Cuenta corriente:</label>
-            <input type="text" name="kontua" id="kontua" placeholder="Pon aqui tu cuenta corriente"><br>
+            <label for="kontua">Kontu korrontea:</label>
+            <input type="text" name="kontua" id="kontua" placeholder="Jarri zure kontu korrontea hemen"><br>
 
-            <label for="telefono_contacto">Telefono de contacto:</label>
-            <input type="text" name="telefono_contacto" id="telefono_contacto" placeholder="Pon aqui tu telefono"><br>
+            <label for="telefono_contacto">Telefono-harremana:</label>
+            <input type="text" name="telefono_contacto" id="telefono_contacto" placeholder="Jarri zure telefonoa hemen"><br>
 
             <label for="gmail">Gmail:</label>
-            <input type="email" id="gmail" name="gmail" placeholder="Pon aqui tu correo" required><br>
+            <input type="email" id="gmail" name="gmail" placeholder="Jarri zure e-posta hemen" required><br>
 
-            <label for="gehigarriak">Extras:</label>
+            <label for="gehigarriak">Gehigarriak:</label>
             <textarea name="gehigarriak" cols="60" rows="10"></textarea><br>
 
             <div class="botones">
-                <input type="submit" class="enviar" value="Enviar">
-                <input type="reset" class="enviar" value="Borrar">
+                <input type="submit" class="enviar" value="Bidali">
+                <input type="reset" class="enviar" value="Ezabatu">
             </div>
         </form>
     </div>
@@ -100,30 +100,30 @@ if (isset($_POST['empresa']) && isset($_POST['material']) && isset($_POST['webgu
 }
 ?>
              <div class="ir_a_comprar">
-                <a href="../../../supplies/idiomas/esp/produktuak.php">Ir a comprar</a>
+                <a href="../../../supplies/idiomas/eusk/produktuak.php">Erostera joan</a>
              </div>
     <!---Empieza todo el texto-->
     <footer>
         <div class="footer-content">
             <div class="left">
-                <strong>Redes sociales</strong>
+                <strong>Sare sozialak</strong>
                 <p id="instagram"><a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram"></i> Instagram</a></p>
                 <p id="youtube"><a href="https://www.youtube.com/" target="_blank"> <i class="fab fa-youtube"></i> Youtube</a></p>
                 <p id="twitter"><a href="https://twitter.com/home" target="_blank"> <i class="fab fa-twitter-square"></i> Twitter</a></p>
                 <p id="facebook"><a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"></i> Facebook</a></p>
             </div>
             <div class="center">
-               <strong>Asuntos legales</strong> 
+               <strong>Legezko gaiak</strong> 
                 <p><a href="#">RGPD (UE)</a></p>
-                <p><a href="#">Terminos y condificiones</a></p>
-                <p><a href="#">Politica de privacidad</a></p>
-                <p><a href="#">Aviso legal</a></p>
+                <p><a href="#">Baldintza juridikoak</a></p>
+                <p><a href="#">Pribatutasun politika</a></p>
+                <p><a href="#">Lege abisua</a></p>
                 </div>
             <div class="right">
-                <strong>Contactar con nosotros</strong>
+                <strong>Jarri gurekin harremanetan</strong>
                 <p><i class="fa-solid fa-envelope"></i> Email: reborn@gmail.com</p>
-                <p><i class="fa-solid fa-phone"></i> Telefono: +372 458 763 198</p>
-                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Direccion: Kentmanni, 10141 Tallinn, Estonia</a></p>
+                <p><i class="fa-solid fa-phone"></i> Mugikorra: +372 458 763 198</p>
+                <p><a href="https://maps.app.goo.gl/XeUK7mCwxkADmLDj9" target="_blank"><i class="fa-solid fa-compass"></i> Helbidea: Kentmanni, 10141 Tallinn, Estonia</a></p>
             </div>
         </div>
     </footer>
